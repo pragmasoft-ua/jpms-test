@@ -73,7 +73,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<main.class>com.example.test/com.example.test.HelloWorld</main.class>
+		<main.class>com.example.test.HelloWorld</main.class>
 		<java.version>11</java.version>
 		<junit.jupiter.version>5.4.2</junit.jupiter.version>
 		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
@@ -135,10 +135,12 @@
 							<classpathPrefix>dependency/</classpathPrefix>
 							<mainClass>${main.class}</mainClass>
 						</manifest>
+						<manifestEntries>
+							<Automatic-Module-Name>com.example.test</Automatic-Module-Name>
+						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
