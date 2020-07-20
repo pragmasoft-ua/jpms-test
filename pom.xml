@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+	<name>jpms test</name>
+	<artifactId>jpms-test</artifactId>
+	<groupId>com.example</groupId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<description>An example Java 11 project using Maven and JUnit 5.x</description>
+
+	<url>https://github.com/pragmasoft-ua/jpms-test</url>
+
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<url>https://spdx.org/licenses/MIT.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Pragmasoft Ukraine</name>
+		<url>https://pragmasoft.com.ua/</url>
+	</organization>
+
+	<scm>
+		<url>https://github.com/pragmasoft-ua/jpms-test</url>
+		<connection>git@github.com:pragmasoft-ua/jpms-test.git</connection>
+		<developerConnection>git@github.com:pragmasoft-ua/jpms-test.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>Issues</system>
+		<url>https://github.com/pragmasoft-ua/jpms-test/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Pipelines</system>
+		<url>https://github.com/pragmasoft-ua/jpms-test/pipelines</url>
+	</ciManagement>
+
+	<contributors>
+		<contributor>
+			<name>Dmytro Zemnytskyi</name>
+			<email>pragmasoft@gmail.com</email>
+			<url>https://pragmasoft.com.ua/</url>
+			<organization>Pragmasoft Ukraine</organization>
+			<organizationUrl>https://pragmasoft.com.ua/</organizationUrl>
+			<roles>
+				<role>architect</role>
+			</roles>
+			<timezone>Europe/Kiev</timezone>
+		</contributor>
+	</contributors>
+
+	<developers>
+		<developer>
+			<id>zdv</id>
+			<name>Dmytro Zemnytskyi</name>
+			<email>pragmasoft@gmail.com</email>
+			<url>https://pragmasoft.com.ua/</url>
+			<organization>Pragmasoft Ukraine</organization>
+			<organizationUrl>https://pragmasoft.com.ua/</organizationUrl>
+			<roles>
+				<role>architect</role>
+			</roles>
+			<timezone>Europe/Kiev</timezone>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<main.class>com.example.test/com.example.test.HelloWorld</main.class>
+		<java.version>11</java.version>
+		<junit.jupiter.version>5.4.2</junit.jupiter.version>
+		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<maven.jar.plugin.version>3.1.1</maven.jar.plugin.version>
+		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.30</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-lambda</artifactId>
+			<version>1.11.822</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven.jar.plugin.version}</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>dependency/</classpathPrefix>
+							<mainClass>${main.class}</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
